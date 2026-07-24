@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary-midnight: #020412;
+  --color-ember: #df6513;
+  --color-ember-hover: #b84e0c;
+  --color-canvas-bg: #faf8ff;
+  --color-card-border: #e1e2ec;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #faf8ff;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-canvas-bg);
+  color: var(--color-primary-midnight);
+}
+
