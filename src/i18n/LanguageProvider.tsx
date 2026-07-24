@@ -211,7 +211,7 @@ const uzTranslations: Record<string, any> = {
     automations: 'avtomatlashtirish',
     and: 'va',
     websites: 'veb-saytlar',
-    title2: "yarataman, biznesingizni o'stiradi.",
+    title2: "yarataman, biznesingizni birgalikda rivojlantiramiz.",
     subtitle: "Men texnik ijro va strategik biznes o'sishi o'rtasidagi bo'shliqni to'ldirib, aniq muhandislik yechimlarini yetkazib beraman.",
     seeMyWork: "Ishlarimni ko'ring",
     letsTalk: "Suhbatlashamiz",
