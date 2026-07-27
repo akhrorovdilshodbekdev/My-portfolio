@@ -19,7 +19,6 @@ import ToolsIUse from './components/ToolsIUse';
 import HowItWorks from './components/HowItWorks';
 import ROICalculator from './components/ROICalculator';
 import ContactForm from './components/ContactForm';
-import FloatingChat from './components/FloatingChat';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -50,7 +49,6 @@ export default function App() {
       </main>
 
       <Footer />
-      <FloatingChat />
     </div>
     </LanguageProvider>
   );

@@ -153,7 +153,7 @@ export default function FloatingChat() {
   }, [isOpen]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 font-sans">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 font-sans max-w-[calc(100vw-16px)]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -161,7 +161,7 @@ export default function FloatingChat() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 40 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="mb-4 w-[340px] sm:w-[380px] h-[520px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col"
+            className="mb-4 w-[calc(100vw-24px)] sm:w-[380px] h-[520px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col"
             id="floating-chat-window"
           >
             {/* Header */}

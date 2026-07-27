@@ -62,7 +62,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden py-12 md:py-20 lg:py-28 bg-canvas-bg">
+    <section id="home" className="relative min-h-dvh md:min-h-[calc(100vh-4rem)] flex items-center overflow-hidden py-12 md:py-20 lg:py-28 bg-canvas-bg">
       {/* Decorative floating gradient blurs in background */}
       <motion.div 
         animate={{
@@ -74,7 +74,7 @@ export default function Hero() {
           duration: 9,
           ease: "easeInOut"
         }}
-        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-ember/5 rounded-full blur-[120px] pointer-events-none" 
+        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-ember/5 rounded-full blur-[120px] pointer-events-none hidden md:block" 
       />
       <motion.div 
         animate={{
@@ -86,7 +86,7 @@ export default function Hero() {
           duration: 11,
           ease: "easeInOut"
         }}
-        className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-primary-midnight/5 rounded-full blur-[80px] pointer-events-none" 
+        className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-primary-midnight/5 rounded-full blur-[80px] pointer-events-none hidden md:block" 
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full">

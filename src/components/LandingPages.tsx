@@ -3,9 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../i18n/LanguageProvider';
 
 const HEROES = [
-  { src: '/images/restaurant1.jpg', label: 'Restaurant', project: 'Restaurant' },
-  { src: '/images/gym1.jpg', label: 'Gym', project: 'Gym' },
-  { src: '/images/travel1.jpg', label: 'Travel', project: 'Travel' },
+  { src: '/images/opt-restaurant1.jpg', label: 'Restaurant', project: 'Restaurant' },
+  { src: '/images/opt-gym1.jpg', label: 'Gym', project: 'Gym' },
+  { src: '/images/opt-travel1.jpg', label: 'Travel', project: 'Travel' },
 ];
 
 export default function LandingPages() {
@@ -60,6 +60,7 @@ export default function LandingPages() {
                 key={idx}
                 src={hero.src}
                 alt={hero.label}
+                loading="lazy"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: idx === currentIndex ? 1 : 0 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
