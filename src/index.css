@@ -63,3 +63,30 @@ html, body {
 video, iframe, canvas {
   max-width: 100%;
 }
+
+/* ===== Tools brand marquee ===== */
+.marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 46s) linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+/* Respect reduced-motion: stop the loop and allow manual horizontal scroll */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-strip {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .marquee-strip::-webkit-scrollbar {
+    display: none;
+  }
+}

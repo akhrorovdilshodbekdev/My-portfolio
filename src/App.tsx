@@ -12,6 +12,7 @@ import { useState } from 'react';
 import LanguageProvider from './i18n/LanguageProvider';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import CaseStudies from './components/CaseStudies';
 import HowIWork from './components/HowIWork';
 import SystemsBuilt from './components/SystemsBuilt';
 import LandingPages from './components/LandingPages';
@@ -39,6 +40,7 @@ export default function App() {
       
       <main className="flex-1">
         <Hero />
+        <CaseStudies />
         <HowIWork />
         <SystemsBuilt />
         <LandingPages />

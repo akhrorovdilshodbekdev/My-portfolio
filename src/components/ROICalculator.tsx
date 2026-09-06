@@ -72,9 +72,6 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
   const [activeTab, setActiveTab] = useState<TabId>('manual');
   const { t, lang } = useLanguage();
 
-  const currencySymbol = lang === 'uz' ? "so'm" : '$';
-  const currencyPrefix = lang === 'uz' ? '' : '$';
-  const currencySuffix = lang === 'uz' ? " so'm" : '';
   const hrsUnit = lang === 'uz' ? 'soat / hafta' : 'hrs/wk';
   const minUnit = lang === 'uz' ? 'daq' : 'min';
   const perMonth = lang === 'uz' ? '/ oy' : '/ mo';
@@ -119,7 +116,8 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
     hoursSaved: 0,
     moneySaved: 0,
     solution: '',
-    breakdown: { label: '', current: 0, projected: 0, unit: '' }
+    breakdown: { label: '', current: 0, projected: 0, unit: '' },
+    bar: 0 // 0–100 fill for the Before→After bar
   });
 
   useEffect(() => {
@@ -127,6 +125,7 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
     let moneySaved = 0;
     let solution = '';
     let breakdown = { label: '', current: 0, projected: 0, unit: '' };
+    let bar = 0; // 0–100 fill for the Before→After bar
 
     const manualSolution = lang === 'uz'
       ? 'Takroriy vazifalarni almashtirish uchun maxsus ish jarayoni avtomatlashtirish (n8n)'
@@ -154,16 +153,18 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
     switch (activeTab) {
       case 'manual': {
         const monthlyHours = Math.round(manualHours * 4.33);
-        const automatable = Math.round(monthlyHours * 0.85);
+        const projectedHours = Math.round(monthlyHours * 0.15);
+        const automatable = monthlyHours - projectedHours;
         hoursSaved = automatable;
         moneySaved = Math.round(hoursSaved * hourlyRate);
         solution = manualSolution;
         breakdown = {
           label: manualLabel,
           current: monthlyHours,
-          projected: Math.round(monthlyHours * 0.15),
+          projected: projectedHours,
           unit: hrsMo
         };
+        bar = monthlyHours > 0 ? Math.round((automatable / monthlyHours) * 100) : 0;
         break;
       }
       case 'leads': {
@@ -172,7 +173,8 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
         const currentSales = Math.round(monthlyVisitors * (conv / 100));
         const projectedSales = Math.round(monthlyVisitors * (improvedConv / 100));
         const extraSales = Math.max(0, projectedSales - currentSales);
-        hoursSaved = Math.round(monthlyVisitors * 0.1);
+        // ~15 min of manual follow-up avoided for each newly captured lead
+        hoursSaved = Math.round(extraSales * 0.25);
         moneySaved = extraSales * avgOrderValue;
         solution = leadsSolution;
         breakdown = {
@@ -181,6 +183,9 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
           projected: projectedSales,
           unit: salesMo
         };
+        // Leads grow rather than shrink, so the bar shows the share of the
+        // projected total that is new (never negative, unlike a reduction).
+        bar = projectedSales > 0 ? Math.round((extraSales / projectedSales) * 100) : 0;
         break;
       }
       case 'bookings': {
@@ -195,13 +200,15 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
           projected: currentLost - recovered,
           unit: lostMo
         };
+        bar = currentLost > 0 ? Math.round((recovered / currentLost) * 100) : 0;
         break;
       }
       case 'support': {
         const monthly = Math.round(weeklyRequests * 4.33);
         const deflectable = Math.round(monthly * 0.7);
         hoursSaved = Math.round((deflectable * minutesEach) / 60);
-        moneySaved = Math.round(hoursSaved * 22);
+        // Same staff hourly rate as the Manual tab (currency-aware) — not a fixed 22.
+        moneySaved = Math.round(hoursSaved * hourlyRate);
         solution = supportSolution;
         breakdown = {
           label: supportLabel,
@@ -209,11 +216,12 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
           projected: monthly - deflectable,
           unit: ticketsMo
         };
+        bar = monthly > 0 ? Math.round((deflectable / monthly) * 100) : 0;
         break;
       }
     }
 
-    setResults({ hoursSaved, moneySaved, solution, breakdown });
+    setResults({ hoursSaved, moneySaved, solution, breakdown, bar });
   }, [activeTab, manualHours, hourlyRate, monthlyVisitors, currentConversion, avgOrderValue, monthlyBookings, noShowPercent, bookingValue, weeklyRequests, minutesEach]);
 
   const handleExport = () => {
@@ -412,6 +420,15 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
                     max={30}
                     hint={lang === 'uz' ? "O'qish, yozish va kuzatuvlarni o'z ichiga oladi" : "Including reading, typing, and follow-ups"}
                   />
+                  <SliderGroup
+                    label={t('roi.hourlyRate')}
+                    value={hourlyRate}
+                    setValue={setHourlyRate}
+                    display={isUz ? `${(hourlyRate).toLocaleString()} so'm/soat` : `$${hourlyRate}/hr`}
+                    min={isUz ? 15000 : 15}
+                    max={isUz ? 300000 : 150}
+                    step={isUz ? 5000 : 5}
+                  />
                 </div>
               )}
             </div>
@@ -471,11 +488,7 @@ export default function ROICalculator({ onPrefill }: ROICalculatorProps) {
                 <div className="h-1.5 bg-white/[0.06] rounded-full mt-2 overflow-hidden">
                   <div
                     className="h-full bg-emerald-400 rounded-full transition-all duration-500"
-                    style={{
-                      width: `${results.breakdown.current > 0
-                        ? Math.min(100, ((results.breakdown.current - results.breakdown.projected) / results.breakdown.current) * 100)
-                        : 0}%`
-                    }}
+                    style={{ width: `${results.bar}%` }}
                   />
                 </div>
               </div>

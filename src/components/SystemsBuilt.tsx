@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { AUTOMATION_PROJECTS, AUTOMATION_PROJECTS_UZ } from '../data';
-import { Bot, ChevronDown, CheckCircle2, Zap, Calendar, MessageSquare, Workflow, HelpCircle, Layers, Settings, ShieldCheck, Server } from 'lucide-react';
+import { ChevronDown, CheckCircle2, Zap, Calendar, Workflow, Layers, Settings, Server } from 'lucide-react';
 import { useState } from 'react';
 import LeadCaptureSandbox from './portfolio/LeadCaptureSandbox';
 import ClinicSchedulerSandbox from './portfolio/ClinicSchedulerSandbox';
-import ScreenshotFrame from './portfolio/ScreenshotFrame';
+import RestaurantBookingSandbox from './portfolio/RestaurantBookingSandbox';
 import { useLanguage } from '../i18n/LanguageProvider';
 
 export default function SystemsBuilt() {
@@ -23,8 +23,6 @@ export default function SystemsBuilt() {
     switch (mockType) {
       case 'workflow':
         return <Workflow className={iconClass} />;
-      case 'chat':
-        return <Bot className={iconClass} />;
       case 'flow':
         return <Settings className={iconClass} />;
       case 'calendar':
@@ -205,12 +203,9 @@ export default function SystemsBuilt() {
                         {project.id === 'auto-3' && (
                           <div className="pt-2">
                             <h5 className="text-xs font-bold font-mono uppercase tracking-wider text-primary-midnight/50 mb-3">
-                              {t('automations.visualProof')}
+                              {t('automations.omnichannelPlayground')}
                             </h5>
-                            <ScreenshotFrame 
-                              title={lang === 'uz' ? 'Ko\'p kanalli restoran yordamchisi (Vidjet + Telegram Bot)' : 'Omnichannel Restaurant Assistant (Widget + Telegram Bot)'}
-                              subtitle={lang === 'uz' ? 'Jonli veb-sayt chat vidjeti va Telegram bron interfeysi vektor bilimlar bazasiga ulangan. Maxsus menyu so\'rovlari, allergiya ma\'lumotlari va kalendar bronlarini muammosiz boshqaradi.' : 'Live website chat widget and Telegram booking interface connected concurrently to a vector knowledge base. Resolves custom menu queries, allergy details, and coordinates calendar bookings seamlessly.'}
-                            />
+                            <RestaurantBookingSandbox />
                           </div>
                         )}
 

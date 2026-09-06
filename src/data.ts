@@ -1,4 +1,4 @@
-import { Project, Tool, FAQItem, WorkStep } from './types';
+import { Project, Tool, FAQItem, WorkStep, RealProject } from './types';
 
 export const WORK_STEPS: WorkStep[] = [
   {
@@ -49,7 +49,6 @@ export const AUTOMATION_PROJECTS: Project[] = [
     title: 'Real Estate Lead Capture System',
     description: 'n8n workflow for lead capture/qualification.',
     tags: ['n8n', 'OpenAI', 'Telegram API', 'Google Sheets'],
-    type: 'automation',
     mockType: 'workflow',
     extendedDescription: 'A complete custom webhook-triggered n8n workflow designed for real estate agencies. Built to run either in the cloud or self-hosted on your own secure private VPS to eliminate monthly subscription limits and ensure 100% data privacy. When a new inquiry hits the website, our workflow runs it through OpenAI for intent analysis, extracts crucial details like budget and property type, saves them directly into Google Sheets, and alerts the agents via Telegram in real-time.',
     features: [
@@ -58,14 +57,13 @@ export const AUTOMATION_PROJECTS: Project[] = [
       'Instant notifications dispatched directly to agent groups in Telegram.',
       'Deployable on secure private VPS to eliminate n8n subscription costs.'
     ],
-    impact: 'Reduced response time from 4 hours to 45 seconds, resulting in a 2.4x increase in lead qualification rate and preventing prospects from going to competitors.'
+    impact: 'In real estate, the first agent to respond usually wins the deal. This workflow catches every website inquiry the moment it lands — AI instantly qualifies the buyer, logs them to your CRM or sheet, and alerts your agents on Telegram in seconds. Run the live demo above and watch it happen.'
   },
   {
     id: 'auto-3',
     title: 'Multi-Channel Booking for Restaurant',
     description: 'Omnichannel booking widget & Telegram bot with knowledge base answers.',
     tags: ['n8n', 'Telegram API', 'Google Calendar', 'Vector DB'],
-    type: 'automation',
     mockType: 'flow',
     extendedDescription: 'An omnichannel restaurant assistant that lives on your website widget and Telegram simultaneously. Using a centralized vector knowledge base, the agent seamlessly answers complex customer questions (about menus, dietary restrictions, dress codes, or directions) while handling real-time booking flows synced directly to Google Calendar.',
     features: [
@@ -73,14 +71,13 @@ export const AUTOMATION_PROJECTS: Project[] = [
       'Conversational booking flow checking real-time tables and logging into Google Sheets.',
       'Intelligent routing of high-value banquet or catering inquiries directly to staff.'
     ],
-    impact: 'Consolidated reservation streams across channels, reduced host phone call load by 65%, and answered 100% of ingredient or FAQ questions instantly using a custom knowledge base.'
+    impact: "A host's phone never stops — the same table booked through three channels, the same allergen question on repeat. This assistant answers menu and FAQ questions instantly in chat and funnels every booking request from your website widget and Telegram into one calendar your staff can actually manage."
   },
   {
     id: 'auto-4',
     title: 'AI Appointment Setter for Clinic',
     description: 'Telegram booking agent with Google Calendar sync.',
     tags: ['OpenAI', 'Telegram API', 'Google Calendar', 'Node.js'],
-    type: 'automation',
     mockType: 'calendar',
     extendedDescription: 'A highly advanced Telegram booking agent synced with Google Calendar. Patients can add, update, delete, or reschedule appointments dynamically via chat. The agent answers pre-operation questions, calculates treatment or service prices, and features a cron-scheduler for same-day morning reminders to eliminate no-shows.',
     features: [
@@ -89,7 +86,7 @@ export const AUTOMATION_PROJECTS: Project[] = [
       'Active patient-care Q&A trained on clinic guidelines and operation policies.',
       'Same-day morning reminder scheduler dispatching automated Telegram alerts.'
     ],
-    impact: 'Automated 160+ monthly patient touchpoints, reducing front-desk scheduling work by 75% and cutting appointment no-show rates to under 2%.'
+    impact: "Most no-shows aren't rudeness — they're forgotten appointments. This agent lets patients book, reschedule, and cancel over chat, quotes treatment prices instantly, and sends an automatic reminder the morning of each visit, so your front desk stops playing phone tag."
   }
 ];
 
@@ -100,7 +97,6 @@ export const AUTOMATION_PROJECTS_UZ: Project[] = [
     title: "Ko'chmas mulk lead yig'ish tizimi",
     description: 'n8n ish jarayoni lead yig\'ish/saralash uchun.',
     tags: ['n8n', 'OpenAI', 'Telegram API', 'Google Sheets'],
-    type: 'automation',
     mockType: 'workflow',
     extendedDescription: "Ko'chmas mulk agentliklari uchun maxsus webhook orqali ishga tushiriladigan n8n ish jarayoni. Bulutda yoki o'zingizning shaxsiy VPSingizda ishlashga mo'ljallangan bo'lib, oylik obuna cheklovlarini yo'q qiladi va 100% ma'lumot maxfiyligini ta'minlaydi. Yangi so'rov veb-saytga kelganda, ish jarayoni uni OpenAI orqali tahlil qiladi, muhim ma'lumotlarni (byudjet, mulk turi) ajratib oladi, Google Sheets ga saqlaydi va agentlarni Telegram orqali real vaqtda xabardor qiladi.",
     features: [
@@ -109,14 +105,13 @@ export const AUTOMATION_PROJECTS_UZ: Project[] = [
       "Telegram guruhlariga to'g'ridan-to'g'ri jo'natiladigan tezkor bildirishnomalar.",
       "n8n obuna xarajatlarini yo'q qilish uchun xavfsiz shaxsiy VPS ga joylashtirish."
     ],
-    impact: "Javob vaqtini 4 soatdan 45 soniyagacha qisqartirdi, lead saralash darajasini 2.4 barobarga oshirdi va mijozlarning raqobatchilarga ketishining oldini oldi."
+    impact: "Ko'chmas mulkda birinchi bo'lib javob bergan agent odatda mijozni qo'lga kiritadi. Bu ish jarayoni veb-saytdagi har bir so'rovni paydo bo'lishi bilan qabul qiladi — AI uni darhol saralaydi, CRM yoki jadvalingizga yozadi va agentlarni soniyalar ichida Telegram orqali ogohlantiradi. Yuqoridagi jonli demoda sinab ko'ring."
   },
   {
     id: 'auto-3',
     title: 'Restoran uchun ko\'p kanalli bron qilish',
     description: 'Bilimlar bazasiga ega omnichannel bron vidjeti va Telegram boti.',
     tags: ['n8n', 'Telegram API', 'Google Calendar', 'Vector DB'],
-    type: 'automation',
     mockType: 'flow',
     extendedDescription: "Veb-sayt vidjeti va Telegram orqali bir vaqtning o'zida ishlaydigan restoran yordamchisi. Markazlashtirilgan vektor bilimlar bazasidan foydalanib, mijozlarning murakkab savollariga (menyu, parhez cheklovlari, kiyinish qoidalari) javob beradi va Google Calendar bilan sinxronlangan real vaqtda bron qilish jarayonini boshqaradi.",
     features: [
@@ -124,14 +119,13 @@ export const AUTOMATION_PROJECTS_UZ: Project[] = [
       "Real vaqt jadvallarini tekshiruvchi va Google Sheets ga ma'lumotlarni yozuvchi suhbat bron qilish jarayoni.",
       "Yuqori qiymatli banket yoki tadbirlar uchun so'rovlarni xodimlarga aqlli yo'naltirish."
     ],
-    impact: "Kanal bo'ylab bron oqimlarini birlashtirdi, telefon qo'ng'iroqlari yukini 65% ga kamaytirdi va ingredient yoki FAQ savollariga 100% tezkor javob berdi."
+    impact: "Qabulxona telefoni tinmay jiringlaydi — bitta stol uch kanal orqali band qilinadi, bir xil allergen savollari takrorlanadi. Bu yordamchi menyu va FAQ savollariga chatda darhol javob beradi hamda veb-sayt vidjeti va Telegram orqali kelgan barcha bron so'rovlarini xodimlar boshqara oladigan bitta kalendarga jamlaydi."
   },
   {
     id: 'auto-4',
     title: 'Klinika uchun AI uchrashuv tayinlagich',
     description: 'Google Calendar sinxronizatsiyasi bilan Telegram bron agenti.',
     tags: ['OpenAI', 'Telegram API', 'Google Calendar', 'Node.js'],
-    type: 'automation',
     mockType: 'calendar',
     extendedDescription: "Google Calendar bilan sinxronlangan ilg'or Telegram bron agenti. Bemorlar chat orqali uchrashuvlarni qo'shishi, yangilashi, o'chirishi yoki boshqa vaqtga ko'chirishi mumkin. Agent operatsiyadan oldingi savollarga javob beradi, davolash narxlarini hisoblaydi va kelmasliklarni bartaraf etish uchun ertalabki eslatmalarni yuboradi.",
     features: [
@@ -140,187 +134,224 @@ export const AUTOMATION_PROJECTS_UZ: Project[] = [
       "Klinika ko'rsatmalari bo'yicha o'qitilgan faol bemor parvarishi savol-javob tizimi.",
       "Avtomatik Telegram eslatmalarini yuboruvchi kundalik ertalabki eslatma rejalashtiruvchisi."
     ],
-    impact: "Oylik 160+ bemor bilan aloqa nuqtasini avtomatlashtirdi, qabulxona ishini 75% ga qisqartirdi va kelmaslik darajasini 2% dan pastga tushirdi."
+    impact: "Ko'pchilik kelmasliklar — beadablik emas, shunchaki unutilgan uchrashuvlar. Bu agent bemorlarga chat orqali bron qilish, vaqtini o'zgartirish va bekor qilish imkonini beradi, davolash narxlarini darhol aytadi va har bir tashrif kuni ertalab avtomatik eslatma yuboradi — qabulxonangiz telefon bilan o'ynashni to'xtatadi."
   }
 ];
 
-export const WEB_PROJECTS: Project[] = [
+// ============================================================
+// REAL, IN-PRODUCTION WORK — the "client-chargeable" proof.
+// Facts come from the client (Ideal Edu Centre) and from the real
+// app behavior — do not present anything here as more than it is.
+// ============================================================
+const EDU_NAME = 'Ideal Edu Centre';
+const EDU_WEBSITE_URL = 'https://idealeducentre.netlify.app/';
+// The mobile app is PRIVATE — the client asked for an internal-only management app,
+// so it is NOT on any app store and gets no public link. The card shows app screenshots
+// instead, under an honest "shown with permission" tag. Screenshots must contain no real
+// student/parent data and the client must have approved public display.
+export const ASSISTANT_IMAGE = '/images/aiassistant.jpg'; // the 56-node graph screenshot the user supplied
+export const ASSISTANT_NAME = 'Scribe AI';
+
+export const REAL_PROJECTS: RealProject[] = [
   {
-    id: 'web-1',
-    title: 'Restaurant Landing Page',
-    description: 'Full visual landing page for an Italian restaurant with online reservation, menu showcase, and Google Maps integration.',
-    tags: ['HTML/CSS', 'JavaScript', 'Lead Gen'],
-    type: 'web',
-    mockType: 'restaurant',
-    extendedDescription: 'A high-conversion landing page built for an authentic Italian restaurant. The design highlights artisan food photos, features a live interactive online reservation form, displays a dynamic menu catalog, and embeds Google Maps for seamless location finding.',
-    features: [
-      'Fully responsive menu showcase with categorization (pasta, pizza, drinks).',
-      'Custom online table booking widget notifying owners instantly via email.',
-      'Optimized load speeds with image-lazy-loading and responsive layouts.',
-      'Google Maps API integration for direct directions routing.'
+    id: 'edu',
+    eyebrow: 'CLIENT PROJECT · WEBSITE + MOBILE APP',
+    title: EDU_NAME,
+    summary:
+      "A public website for Ideal Edu Centre, plus a private management app the center runs on every day — the admin side handles the money and the big picture, while each teacher runs their own groups and classes.",
+    bullets: [
+      'Admin: log payments, manage and reschedule groups, and see income reports by student',
+      'Deleted students are never lost — they move to a separate list and can be restored in one tap if they come back',
+      'Teachers: create groups, add or move students between them, and log attendance',
     ],
-    impact: 'Generated 430+ online reservation bookings in the first month of launch, driving a noticeable lift in weekend table turns.'
+    tech: ['Admin + Teacher roles', 'Attendance', 'Payments & reports', 'Student restore'],
+    imageTag: "Client's private app — shown with permission",
+    screens: [
+      {
+        src: '/images/edu-app-1.png.jpg',
+        alt: 'Admin overview screen of the Ideal Edu Centre app',
+        caption: 'Admin — the whole center at a glance',
+      },
+      {
+        src: '/images/edu-app-2.png.jpg',
+        alt: 'Teacher portal home screen of the Ideal Edu Centre app',
+        caption: 'Teacher portal — manage your own groups',
+      },
+      {
+        src: '/images/edu-app-3.png.jpg',
+        alt: 'Students section of the Ideal Edu Centre app showing groups and student counts',
+        caption: 'Students — every group and its student count',
+      },
+    ],
+    links: [{ label: 'Visit the website', href: EDU_WEBSITE_URL, external: true }],
   },
   {
-    id: 'web-3',
-    title: 'Website for Gym',
-    description: 'Professional gym website with program showcase, transformation galleries, and booking integration.',
-    tags: ['HTML/CSS', 'Calendly API'],
-    type: 'web',
-    mockType: 'fitness',
-    extendedDescription: 'A professional, high-impact website built for a fitness gym. Features interactive transformation sliders, program cards with clear pricing, high-converting copy, and an embedded booking calendar for consultation calls.',
-    features: [
-      'Interactive before/after transformation image sliders.',
-      'Gym program cards with benefit pillars and pricing tiers.',
-      'Seamless booking calendar integration for trial sessions.',
-      'Performance-tuned layout scoring 98+ on Lighthouse SEO metrics.'
+    id: 'assistant',
+    eyebrow: 'AI PRODUCT · SELF-HOSTED',
+    title: `${ASSISTANT_NAME} — 56-node AI assistant`,
+    summary:
+      "Scribe AI is a real, working AI assistant. Talk to it by voice or text — it schedules events, drafts emails, runs research, and turns PDFs into clean summaries. It keeps its own memory in PostgreSQL, searches a Qdrant vector store, and runs self-hosted in Docker, so a business's data stays on its own infrastructure.",
+    bullets: [
+      'Voice and text conversations',
+      'Schedules events, drafts emails, and researches topics',
+      'Reads PDFs and produces clean summaries',
+      'Self-hosted in Docker — deploy it for your business, your data stays yours',
     ],
-    impact: 'Helped the gym sign 14 premium coaching clients in the first 3 weeks by turning Instagram traffic into pre-scheduled calendar calls.'
+    tech: ['56-node agent', 'Voice + Text', 'PostgreSQL', 'Qdrant', 'Docker'],
+    image: ASSISTANT_IMAGE,
+    imageAlt: 'Architecture graph of the 56-node Scribe AI assistant',
+    links: [{ label: 'Build one for your business', href: '#contact', external: false }],
   },
-  {
-    id: 'web-travel',
-    title: 'Travel & Destinations',
-    description: 'Beautiful travel landing page with destination showcase, itinerary builder, and booking flow.',
-    tags: ['HTML/CSS', 'JavaScript'],
-    type: 'web',
-    mockType: 'travel',
-    extendedDescription: 'A visually immersive travel landing page designed to inspire wanderlust. Features stunning destination galleries, an interactive trip planner, and a streamlined inquiry form for custom travel packages.',
-    features: [
-      'Responsive destination showcase with high-quality imagery.',
-      'Interactive trip builder allowing users to customize packages.',
-      'Seamless inquiry-to-booking form with email notifications.',
-      'Mobile-first design with smooth scroll animations.'
-    ],
-    impact: 'Drove 85+ qualified travel inquiries in the first month with a clean, trust-building design that reduced bounce rate by 40%.'
-  }
 ];
 
-// Uzbek translations for web projects
-export const WEB_PROJECTS_UZ: Project[] = [
+export const REAL_PROJECTS_UZ: RealProject[] = [
   {
-    id: 'web-1',
-    title: 'Restoran Landing Page',
-    description: "Onlayn bron qilish, menyu namoyishi va Google Maps integratsiyasi bilan italyan restorani uchun to'liq vizual landing page.",
-    tags: ['HTML/CSS', 'JavaScript', 'Lead Gen'],
-    type: 'web',
-    mockType: 'restaurant',
-    extendedDescription: "Haqiqiy italyan restorani uchun yuqori konversiyali landing page. Dizayn hunarmand taomlar fotosuratlarini, jonli interaktiv onlayn bron qilish formasini, dinamik menyu katalogini va joylashuvni topish uchun Google Maps integratsiyasini o'z ichiga oladi.",
-    features: [
-      "Kategoriyalash bilan to'liq moslashuvchan menyu namoyishi (pasta, pizza, ichimliklar).",
-      "Egasi uchun elektron pochta orqali tezkor xabarlar yuboradigan maxsus onlayn stol bron qilish vidjeti.",
-      "Rasmlarni kechiktirib yuklash va moslashuvchan dizayn bilan tezlashtirilgan yuklash tezligi.",
-      "To'g'ridan-to'g'ri yo'nalishlar uchun Google Maps API integratsiyasi."
+    id: 'edu',
+    eyebrow: 'MIJOZ LOYIHASI · VEB-SAYT + MOBIL ILOVA',
+    title: EDU_NAME,
+    summary:
+      "Ideal Edu Centre uchun ochiq veb-sayt va markaz har kuni ishlaydigan maxfiy boshqaruv ilovasi. Admin qismida pul tushumlari va katta manzara, har bir o'qituvchi esa o'z guruhlari va mashg'ulotlarini ilova orqali yuritadi.",
+    bullets: [
+      "Admin: to'lovlarni qayd etish, guruhlarni boshqarish va qayta rejalashtirish, o'quvchi bo'yicha tushum hisobotlari",
+      "O'chirilgan o'quvchi yo'qolmaydi — alohida ro'yxatda saqlanadi va qaytsa, bir bosishda tiklanadi",
+      "O'qituvchi: guruh yaratish, o'quvchilarni qo'shish yoki ko'chirish va davomatni belgilash",
     ],
-    impact: "Birinchi oyda 430+ onlayn bron qilishni yaratdi va dam olish kunlari stol aylanishlarini sezilarli darajada oshirdi."
+    tech: ["Admin + O'qituvchi", 'Davomat', "To'lovlar va hisobotlar", "O'quvchini tiklash"],
+    imageTag: "Mijozning maxfiy ilovasi — ruxsat bilan ko'rsatilmoqda",
+    screens: [
+      {
+        src: '/images/edu-app-1.png.jpg',
+        alt: "Ideal Edu Centre ilovasining admin ko'rinishdagi bosh ekrani",
+        caption: 'Admin — butun markaz bir qarashda',
+      },
+      {
+        src: '/images/edu-app-2.png.jpg',
+        alt: "Ideal Edu Centre ilovasining o'qituvchi paneldagi bosh ekrani",
+        caption: "O'qituvchi paneli — o'z guruhlaringizni boshqaring",
+      },
+      {
+        src: '/images/edu-app-3.png.jpg',
+        alt: "Ideal Edu Centre ilovasining guruhlar va o'quvchilar soni ko'rinadigan bo'limi",
+        caption: 'O\'quvchilar — har bir guruh va uning o\'quvchilar soni',
+      },
+    ],
+    links: [{ label: 'Veb-saytni ko\'rish', href: EDU_WEBSITE_URL, external: true }],
   },
   {
-    id: 'web-3',
-    title: 'Sport zal uchun veb-sayt',
-    description: "Dastur namoyishi, transformatsiya galereyalari va bron integratsiyasi bilan professional sport zali veb-sayti.",
-    tags: ['HTML/CSS', 'Calendly API'],
-    type: 'web',
-    mockType: 'fitness',
-    extendedDescription: "Fitness sport zali uchun professional, yuqori ta'sirli veb-sayt. Interaktiv oldin/keyin slayderlari, aniq narxlash bilan dastur kartalari, yuqori konversiyali matn va maslahat qo'ng'iroqlari uchun o'rnatilgan bron kalendarini o'z ichiga oladi.",
-    features: [
-      "Interaktiv oldin/keyin transformatsiya slayderlari.",
-      "Foyda ustunlari va narx darajalari bilan sport zal dasturlari kartalari.",
-      "Sinov sessiyalari uchun uzluksiz bron kalendar integratsiyasi.",
-      "Lighthouse SEO ko'rsatkichlarida 98+ ballga ega optimallashtirilgan dizayn."
+    id: 'assistant',
+    eyebrow: "AI MAHSULOT · O'Z SERVERIDA",
+    title: `${ASSISTANT_NAME} — 56 tugunli AI yordamchi`,
+    summary:
+      "Scribe AI — haqiqiy, ishlayotgan AI yordamchi. Unga ovoz yoki matn orqali gapiring — u tadbirlarni rejalashtiradi, elektron xatlar yozadi, ma'lumot qidiradi va PDFlarni aniq xulosaga aylantiradi. Xotirasini PostgreSQLda saqlaydi, Qdrant vektor bazasidan qidiradi va Dockerda o'z serverida ishlaydi — shuning uchun biznes ma'lumotlari o'z infratuzilmasida qoladi.",
+    bullets: [
+      'Ovozli va matnli muloqot',
+      "Tadbirlarni rejalashtiradi, xat yozadi va ma'lumot qidiradi",
+      "PDFlarni o'qib, aniq xulosa chiqaradi",
+      "Dockerda o'z serverida ishlaydi — biznesingiz uchun joylashtiring, ma'lumotlaringiz sizda qoladi",
     ],
-    impact: "Instagram trafigini oldindan rejalashtirilgan kalendar qo'ng'iroqlariga aylantirib, sport zaliga dastlabki 3 haftada 14 ta premium murabbiylik mijozini imzolashga yordam berdi."
+    tech: ['56 tugunli agent', 'Ovoz + Matn', 'PostgreSQL', 'Qdrant', 'Docker'],
+    image: ASSISTANT_IMAGE,
+    imageAlt: "56 tugunli Scribe AI yordamchisining arxitektura grafigi",
+    links: [{ label: 'Biznesingiz uchun ham quraman', href: '#contact', external: false }],
   },
-  {
-    id: 'web-travel',
-    title: 'Sayohat va yo\'nalishlar',
-    description: "Yo'nalishlar namoyishi, marshrut yaratuvchi va bron qilish bilan chiroyli sayohat landing page.",
-    tags: ['HTML/CSS', 'JavaScript'],
-    type: 'web',
-    mockType: 'travel',
-    extendedDescription: "Sayohat ishtiyoqini uyg'otish uchun vizual jozibali landing page. Ajoyib yo'nalish galereyalari, interaktiv sayohat rejalashtiruvchisi va maxsus sayohat paketlari uchun soddalashtirilgan so'rov formasini o'z ichiga oladi.",
-    features: [
-      "Yuqori sifatli tasvirlar bilan moslashuvchan yo'nalish namoyishi.",
-      "Foydalanuvchilarga paketlarni sozlash imkonini beruvchi interaktiv sayohat yaratuvchi.",
-      "Elektron pochta bildirishnomalari bilan uzluksiz so'rovdan-bronga forma.",
-      "Silliq skroll animatsiyalari bilan mobil-birinchi dizayn."
-    ],
-    impact: "Birinchi oyda 85+ malakali sayohat so'rovlarini jalb qildi va ishonchni mustahkamlovchi dizayn bilan chiqish ko'rsatkichini 40% ga kamaytirdi."
-  }
 ];
 
 export const TOOLS: Tool[] = [
-  { name: 'n8n', category: 'Automation', iconName: 'Workflow' },
-  { name: 'Claude API', category: 'Development', iconName: 'BrainCircuit' },
-  { name: 'OpenAI API', category: 'AI', iconName: 'Sparkles' },
-  { name: 'Voiceflow', category: 'Chatbots', iconName: 'MessageSquareText' },
-  { name: 'Botpress', category: 'Chatbots', iconName: 'Bot' },
-  { name: 'HTML/CSS', category: 'Frontend', iconName: 'Layout' },
-  { name: 'JavaScript', category: 'Frontend', iconName: 'Code2' },
-  { name: 'React', category: 'Frontend', iconName: 'Atom' },
-  { name: 'Tailwind CSS', category: 'Frontend', iconName: 'Paintbrush' },
-  { name: 'Stitch', category: 'Design', iconName: 'PenTool' },
-  { name: 'Supabase Postgres', category: 'Database', iconName: 'Database' },
-  { name: 'Google Console API', category: 'Integration', iconName: 'Globe' }
+  { name: 'n8n', category: 'Automation', brand: 'n8n' },
+  { name: 'Claude API', category: 'Development', brand: 'claude' },
+  { name: 'OpenAI API', category: 'AI', brand: 'openai' },
+  { name: 'HTML/CSS', category: 'Frontend', brand: 'htmlcss' },
+  { name: 'JavaScript', category: 'Frontend', brand: 'javascript' },
+  { name: 'React', category: 'Frontend', brand: 'react' },
+  { name: 'Tailwind CSS', category: 'Frontend', brand: 'tailwind' },
+  { name: 'Stitch', category: 'Design', brand: 'generic' },
+  { name: 'Supabase Postgres', category: 'Database', brand: 'supabase' },
+  { name: 'Google Console API', category: 'Integration', brand: 'googleCloud' }
 ];
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: 'How does the lead generation automation actually work?',
-    answer: 'It\'s simple. I place a smart widget on your website — similar to the chat bubble you see on this page. When a visitor interacts with it, the AI qualifies them as a lead, captures their details, and saves everything to your CRM or spreadsheet. You get a notification on Telegram, WhatsApp, or email in under a second. No leads slip through.'
+    question: 'What do you actually build?',
+    answer: 'Three things — and I often combine them. (1) Websites: fast landing pages and full multi-page sites, delivered with the domain, hosting, and SEO set up for you as one done-for-you package. (2) Native mobile apps for Android. (3) AI automation: assistants and workflows that capture leads, take bookings, and answer support 24/7. Many projects are one of these; the strongest ones pair a website with an AI assistant on top.'
   },
   {
-    question: 'What can the AI chatbot handle without me?',
-    answer: 'It can handle up to 80% of routine client inquiries like checking order status, booking appointments, responding to FAQs, and retrieving account details. If a request is too complex, it seamlessly gathers the contact info and hands it off to your human team.'
+    question: 'I run a local business and don\'t have a website yet. Where do I start?',
+    answer: 'Start with the full package. I register your domain, set up hosting, build the site, and take care of the SEO basics so Google can actually find you — one person, one fixed price, nothing for you to configure. You don\'t need to bring a domain, hosting, or written copy; I use what you already have (logo, photos, phone number) and write the rest from a short call.'
   },
   {
-    question: 'I don\'t use a fancy CRM. Will this still work?',
-    answer: 'Absolutely! While CRM integrations are clean, we can sync your leads directly with Google Sheets, Airtable, Notion, Slack, or send them as clean, real-time alerts to your Telegram/WhatsApp chat. We build to fit your current setup.'
+    question: 'How fast can I go live?',
+    answer: 'A landing page or marketing website is typically live within 5–7 days of approval, and most workflow automations land in the same window. A native mobile app takes longer — there\'s more to build and test — so I put an exact timeline in your written proposal before we start. No guessing.'
   },
   {
-    question: 'How fast do I see results?',
-    answer: 'Most automations and landing pages are built and live within 5 to 7 days. Once launched, lead notification streams, automated calendar bookings, and database entries operate in real-time instantly.'
+    question: 'How does the lead-capture automation actually work?',
+    answer: 'I place a smart widget or bot where your customers already are — on your website, Telegram, or WhatsApp. When a visitor interacts with it, the AI asks a few qualifying questions, captures the details, saves them to your CRM, spreadsheet, or Notion, and pings you in under a second. No lead slips through.'
   },
   {
-    question: 'What if I need changes later?',
-    answer: 'I design with adaptability in mind and provide 30 days of post-launch hyper-support. After that, we can set up a lightweight monthly care plan or train your team on how to tweak simple rules.'
+    question: 'What can the AI assistant handle on its own?',
+    answer: 'The routine stuff: answering FAQs, booking and rescheduling appointments, quoting prices, and checking order or account status. When a request genuinely needs a human, it gathers the contact details and hands off with full context — so your team is never re-asking the same questions.'
   },
   {
-    question: 'Can you deploy automations on a self-hosted private VPS?',
-    answer: 'Absolutely! I specialize in setting up self-hosted instances of n8n, CapRover, or Coolify on private Virtual Private Servers (VPS) like DigitalOcean or Hetzner. This gives you 100% data privacy, unlimited monthly workflow runs, and saves hundreds of dollars in SaaS subscription fees by bypassing cloud pricing limits.'
+    question: 'I don\'t use a CRM. Will this still work?',
+    answer: 'Yes. If you have a CRM we connect to it; if not, leads can land in Google Sheets, Notion, Slack, or as clean Telegram/WhatsApp alerts. I build around the tools you already use — not the other way around.'
   },
   {
-    question: 'Can this work for my specific industry?',
-    answer: 'Yes. I have built workflows for e-commerce, real estate agencies, clinical practices, coaching, SaaS waitlists, and local services. If your business repeats a digital task daily, we can automate it.'
+    question: 'What does it cost?',
+    answer: 'It depends on scope, so I give a fixed quote — never hourly surprises. A single landing page is the most affordable option; a custom mobile app or a website-plus-AI project is a bigger investment. The fastest way to get a real number is to send your goal through the contact form — you\'ll get a concrete plan and price within 24 hours.'
+  },
+  {
+    question: 'Can everything run on my own private server?',
+    answer: 'Yes — that\'s a specialty. Automations and AI assistants can run self-hosted on a private VPS (n8n, CapRover/Coolify, or Docker), which keeps your data on your own infrastructure and removes per-run SaaS limits. Websites are usually fine on managed hosting; when privacy or volume matters, we go self-hosted.'
+  },
+  {
+    question: 'What happens after launch?',
+    answer: 'Every project includes 30 days of hands-on support after we go live. After that, most clients choose a small monthly care plan for updates, tweaks, and backups — or I train your team to make simple changes themselves. Nothing disappears the day we launch.'
+  },
+  {
+    question: 'Can you build for my specific industry?',
+    answer: 'Yes. The live demos on this page cover real estate, clinics, and restaurants, and an education centre is a current client — I built its website and its internal management app. If your business repeats a daily digital task or needs more customers online, the same approach applies. Not sure where you fit? Tell me what you do and I\'ll point you to the right starting point.'
   }
 ];
 
 // Uzbek translations for FAQ
 export const FAQ_ITEMS_UZ: FAQItem[] = [
   {
-    question: "Lead avtomatlashtirish aslida qanday ishlaydi?",
-    answer: "Bu juda oddiy. Men veb-saytingizga aqlli vidjet o'rnataman — bu sahifadagi chat qarshisiga o'xshash. Tashrif buyuruvchi u bilan muloqotga kirishganda, AI ularni lead sifatida saralaydi, ma'lumotlarini oladi va hamma narsani CRM yoki jadvalingizga saqlaydi. Siz Telegram, WhatsApp yoki elektron pochta orqali bir soniya ichida bildirishnoma olasiz. Hech qanday lead yo'qolmaydi."
+    question: "Aslida nima qurib berasiz?",
+    answer: "Uch yo'nalish — va ko'pincha ularni birlashtiraman. (1) Veb-saytlar: tezkor landing pagelar va to'liq ko'p sahifali saytlar; domen, xosting va SEO hammasi tayyor holda — bitta to'liq xizmat sifatida. (2) Android uchun mobil ilovalar. (3) AI avtomatlashtirish: leadlarni yig'adigan, bronlarni qabul qiladigan va 24/7 qo'llab-quvvatlashga javob beradigan yordamchilar va ish jarayonlari. Ko'p loyihalar shulardan biri; eng kuchlilari veb-saytni AI yordamchi bilan birlashtiradi."
   },
   {
-    question: 'AI chatbot mensiz nimani bajara oladi?',
-    answer: "U buyurtma holatini tekshirish, uchrashuvlarni bron qilish, tez-tez so'raladigan savollarga javob berish va hisob ma'lumotlarini olish kabi 80% gacha odatiy mijoz so'rovlarini bajara oladi. Agar so'rov juda murakkab bo'lsa, u kontakt ma'lumotlarini to'playdi va sizning jamoangizga uzatadi."
+    question: "Veb-saytim yo'q, mahalliy biznesman. Qayerdan boshlashim kerak?",
+    answer: "To'liq paketdan boshlang. Men domeningizni ro'yxatdan o'tkazaman, xostingni sozlayman, saytni quraman va SEO asoslarini (Google sizni topishi uchun) o'rnataman — bitta odam, bitta qat'iy narx, sizga hech narsa sozlash shart emas. Domen, xosting yoki tayyor matn olib kelishingiz shart emas; bor narsalaringizdan (logo, suratlar, telefon raqam) foydalanaman, qolganini qisqa suhbat asosida yozaman."
   },
   {
-    question: "Men murakkab CRM ishlatmayman. Bu baribir ishlaydimi?",
-    answer: "Albatta! CRM integratsiyalari toza bo'lsa-da, biz leadlaringizni to'g'ridan-to'g'ri Google Sheets, Airtable, Notion, Slack bilan sinxronlashimiz yoki ularni Telegram/WhatsApp chatingizga real vaqtda xabarlar sifatida yuborishimiz mumkin. Biz sizning mavjud tizimingizga moslashamiz."
+    question: "Qanchalik tez ishga tushaman?",
+    answer: "Landing page yoki marketing veb-sayti odatda tasdiqlanganidan keyin 5-7 kun ichida ishga tushadi, aksariyat ish jarayonlari avtomatlashtirish ham xuddi shu muddatda. Mobil ilova ko'proq vaqt oladi — qurish va sinash ko'proq — shuning uchun boshlashdan oldin yozma taklifingizga aniq muddatni kiritaman. Taxmin yo'q."
   },
   {
-    question: "Natijalarni qanchalik tez ko'raman?",
-    answer: "Aksariyat avtomatlashtirish va landing pagelar 5-7 kun ichida quriladi va ishga tushiriladi. Ishga tushirilgandan so'ng, lead bildirishnomalari, avtomatik kalendar bronlari va ma'lumotlar bazasi yozuvlari real vaqtda ishlaydi."
+    question: "Lead yig'ish avtomatlashtirishi aslida qanday ishlaydi?",
+    answer: "Mijozlaringiz turgan joyga — veb-saytingizga, Telegram yoki WhatsAppga aqlli vidjet yoki bot o'rnataman. Tashrif buyuruvchi u bilan gaplashganda, AI bir nechta saralovchi savol beradi, ma'lumotlarni oladi, CRM, jadval yoki Notionga saqlaydi va sizga bir soniya ichida xabar yuboradi. Hech qanday lead boy bermaysiz."
   },
   {
-    question: "Keyinchalik o'zgartirishlar kerak bo'lsa-chi?",
-    answer: "Men moslashuvchanlikni hisobga olgan holda dizayn yarataman va ishga tushirilgandan keyin 30 kunlik yuqori darajadagi qo'llab-quvvatlashni ta'minlayman. Shundan so'ng, engil oylik parvarish rejasini o'rnatishimiz yoki jamoangizni oddiy qoidalarni o'zgartirishga o'rgatishimiz mumkin."
+    question: "AI yordamchi mensiz nimani bajara oladi?",
+    answer: "Odatiy ishlarni: tez-tez so'raladigan savollarga javob berish, uchrashuvlarni bron qilish va ko'chirish, narxlarni aytish, buyurtma yoki hisob holatini tekshirish. Agar so'rov haqiqatan odamni talab qilsa, u kontakt ma'lumotlarini to'playdi va to'liq kontekst bilan jamoangizga uzatadi — jamoangiz bir xil savollarni qayta so'rashiga to'g'ri kelmaydi."
   },
   {
-    question: "Avtomatlashtirishlarni shaxsiy VPS ga joylashtira olasizmi?",
-    answer: "Albatta! Men DigitalOcean yoki Hetzner kabi shaxsiy Virtual Xususiy Serverlarda n8n, CapRover yoki Coolify ni o'rnatishga ixtisoslashganman. Bu sizga 100% ma'lumot maxfiyligi, cheksiz oylik ish jarayonlari va bulut narx cheklovlarini chetlab o'tib, SaaS obuna to'lovlarida yuzlab dollarlarni tejash imkonini beradi."
+    question: "CRM ishlatmayman. Bu baribir ishlaydimi?",
+    answer: "Ha. CRMingiz bo'lsa — unga ulanamiz; bo'lmasa, leadlar Google Sheets, Notion, Slack yoki toza Telegram/WhatsApp xabarlari ko'rinishida kelishi mumkin. Men siz foydalanayotgan vositalarga mos quraman — aksincha emas."
   },
   {
-    question: "Bu mening soham uchun ishlaydimi?",
-    answer: "Ha. Men elektron tijorat, ko'chmas mulk agentliklari, klinik amaliyotlar, kouching, SaaS kutish ro'yxatlari va mahalliy xizmatlar uchun ish jarayonlarini yaratganman. Agar biznesingiz har kuni raqamli vazifani takrorlasa, biz uni avtomatlashtira olamiz."
+    question: "Narxi qancha?",
+    answer: "Hajmga bog'liq, shuning uchun qat'iy narx beraman — hech qanday kutilmagan soatlik to'lov yo'q. Bitta landing page eng arzon variant; maxsus mobil ilova yoki veb-sayt + AI loyihasi kattaroq sarmoya. Haqiqiy raqam olishning eng tez yo'li — kontakt forma orqali maqsadingizni yuborish; 24 soat ichida aniq reja va narx olasiz."
+  },
+  {
+    question: "Hammasi o'zimning shaxsiy serverimda ishlay oladimi?",
+    answer: "Ha — bu mening ixtisosim. Avtomatlashtirish va AI yordamchilar shaxsiy VPSda (n8n, CapRover/Coolify yoki Docker) ishlashi mumkin — bu ma'lumotlaringiz o'z infratuzilmangizda qolishini ta'minlaydi va SaaS limitlarini yo'q qiladi. Veb-saytlar odatda boshqariladigan xostingda yaxshi; maxfiylik yoki hajm muhim bo'lsa, o'z serveringizga o'tamiz."
+  },
+  {
+    question: "Ishga tushgandan keyin nima bo'ladi?",
+    answer: "Har bir loyiha ishga tushgandan keyin 30 kunlik jonli qo'llab-quvvatlashni o'z ichiga oladi. Shundan so'ng ko'pchilik mijozlar yangilanishlar, sozlashlar va zaxira nusxalar uchun kichik oylik parvarish rejasini tanlaydi — yoki jamoangizni oddiy o'zgarishlarni o'zi qilishga o'rgataman. Ishga tushgan kunimizda hammasi yo'qolib ketmaydi."
+  },
+  {
+    question: "Mening soham uchun qura olasizmi?",
+    answer: "Ha. Bu sahifadagi jonli demolar ko'chmas mulk, klinika va restoranni qamrab oladi, ta'lim markazi esa hozirgi mijozim — uning veb-saytini va ichki boshqaruv ilovasini qurdim. Agar biznesingiz har kuni raqamli vazifani takrorlasa yoki onlayn mijozlarga muhtoj bo'lsa, xuddi shu yondashuv ishlaydi. Qayerga mos kelishingizga ishonchingiz komil bo'lmasa, nima qilishingizni ayting — men to'g'ri boshlanish nuqtasini ko'rsataman."
   }
 ];

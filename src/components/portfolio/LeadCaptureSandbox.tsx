@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Play, ArrowRight, CheckCircle2, MessageSquare, Database, Bot, Send, ShieldAlert, Loader2 } from 'lucide-react';
+import { Play, CheckCircle2, Database } from 'lucide-react';
 
 export default function LeadCaptureSandbox() {
   const [address, setAddress] = useState('124 Luxury Parkway, Austin TX');
@@ -64,17 +63,16 @@ export default function LeadCaptureSandbox() {
     >
       {/* Sandbox Header */}
       <div className="bg-[#111625] px-4 py-3 border-b border-white/5 flex items-center justify-between text-xs font-mono">
-        <span className="text-ember font-bold flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-ember animate-pulse" />
+        <span className="text-ember font-bold">
           n8n PIPELINE WORKFLOW RUNNER
         </span>
         <span className="text-white/40">Real Estate Lead Capture</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-        
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+
         {/* Left: Input & Flow Visualizer */}
-        <div className="lg:col-span-7 p-6 md:p-8 space-y-6 bg-[#0e1322] border-b lg:border-b-0 lg:border-r border-white/5">
+        <div className="md:col-span-7 p-5 md:p-8 space-y-5 md:space-y-6 bg-[#0e1322] border-b md:border-b-0 md:border-r border-white/5">
           {step === 0 ? (
             <div className="space-y-4 text-left">
               <span className="inline-flex items-center gap-1.5 text-[9px] font-bold font-mono tracking-wider uppercase text-ember bg-ember/10 px-2 py-0.5 rounded">
@@ -208,7 +206,7 @@ export default function LeadCaptureSandbox() {
         </div>
 
         {/* Right: Live Terminal Log activity */}
-        <div className="lg:col-span-5 p-4 bg-[#080b13] flex flex-col justify-between font-mono text-[10px] border-t lg:border-t-0 lg:border-l border-white/10 text-white/70">
+        <div className="hidden md:flex md:col-span-5 p-4 bg-[#080b13] flex-col justify-between font-mono text-[10px] border-t md:border-t-0 md:border-l border-white/10 text-white/70">
           <div className="space-y-3 flex-1 overflow-hidden">
             <div className="flex items-center justify-between text-white/30 border-b border-white/5 pb-2">
               <span className="flex items-center gap-1">

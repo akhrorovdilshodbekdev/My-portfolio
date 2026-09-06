@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, Calendar, User, Check, Send, Sparkles, Loader2, RefreshCw, Trash2, CalendarClock, DollarSign, Bell, Shield } from 'lucide-react';
+import { Calendar, Send, Loader2, RefreshCw, Trash2, CalendarClock, DollarSign, Bell, Shield } from 'lucide-react';
 
 interface Message {
   sender: 'patient' | 'assistant' | 'system';
@@ -176,17 +175,16 @@ export default function ClinicSchedulerSandbox() {
     >
       {/* Sandbox Header */}
       <div className="bg-[#111625] px-4 py-3 border-b border-white/5 flex items-center justify-between text-xs font-mono">
-        <span className="text-ember font-bold flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="text-ember font-bold">
           TELEGRAM AI APPOINTMENT AGENT
         </span>
         <span className="text-white/40">GCal & Cron Reminder Simulator</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-        
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+
         {/* Left: Chat interface */}
-        <div className="lg:col-span-7 p-4 md:p-6 bg-[#090d16] flex flex-col h-[400px] justify-between border-b lg:border-b-0 lg:border-r border-white/5">
+        <div className="md:col-span-7 p-4 md:p-6 bg-[#090d16] flex flex-col h-[380px] md:h-[400px] justify-between border-b md:border-b-0 md:border-r border-white/5">
           {/* Header */}
           <div className="bg-white/5 border border-white/10 rounded-lg px-3 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -323,7 +321,7 @@ export default function ClinicSchedulerSandbox() {
         </div>
 
         {/* Right: GCal integration logs panel */}
-        <div className="lg:col-span-5 p-4 bg-[#080b13] flex flex-col justify-between font-mono text-[10px] border-t lg:border-t-0 lg:border-l border-white/10 text-white/70">
+        <div className="hidden md:flex md:col-span-5 p-4 bg-[#080b13] flex-col justify-between font-mono text-[10px] border-t md:border-t-0 md:border-l border-white/10 text-white/70">
           <div className="space-y-3 flex-1 overflow-hidden">
             <div className="flex items-center justify-between text-white/30 border-b border-white/5 pb-2">
               <span className="flex items-center gap-1">

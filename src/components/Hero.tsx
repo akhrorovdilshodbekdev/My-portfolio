@@ -1,33 +1,9 @@
 import { motion } from 'motion/react';
-import { Terminal, Play, CheckCircle2, ArrowRight, Zap, Award } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { ArrowRight, Zap, Award, Globe, Smartphone, Bot, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
 
 export default function Hero() {
-  const [isRunning, setIsRunning] = useState(false);
-  const [runStep, setRunStep] = useState(0);
   const { t } = useLanguage();
-
-  const triggerWorkflow = () => {
-    if (isRunning) return;
-    setIsRunning(true);
-    setRunStep(1);
-  };
-
-  useEffect(() => {
-    if (!isRunning) return;
-
-    const timer1 = setTimeout(() => setRunStep(2), 1500);
-    const timer2 = setTimeout(() => {
-      setRunStep(3);
-      setIsRunning(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
-  }, [isRunning]);
 
   const handleScrollTo = (id: string) => {
     const el = document.querySelector(id);
@@ -35,6 +11,12 @@ export default function Hero() {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const pillars = [
+    { icon: Globe, title: t('hero.p1t'), desc: t('hero.p1d'), target: '#websites' },
+    { icon: Smartphone, title: t('hero.p2t'), desc: t('hero.p2d'), target: '#work' },
+    { icon: Bot, title: t('hero.p3t'), desc: t('hero.p3d'), target: '#automations' },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,8 +31,8 @@ export default function Hero() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 25 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         type: 'spring',
@@ -64,7 +46,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-dvh md:min-h-[calc(100vh-4rem)] flex items-center overflow-hidden py-12 md:py-20 lg:py-28 bg-canvas-bg">
       {/* Decorative floating gradient blurs in background */}
-      <motion.div 
+      <motion.div
         animate={{
           y: [0, -20, 0],
           x: [0, 15, 0],
@@ -74,9 +56,9 @@ export default function Hero() {
           duration: 9,
           ease: "easeInOut"
         }}
-        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-ember/5 rounded-full blur-[120px] pointer-events-none hidden md:block" 
+        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-ember/5 rounded-full blur-[120px] pointer-events-none hidden md:block"
       />
-      <motion.div 
+      <motion.div
         animate={{
           y: [0, 25, 0],
           x: [0, -20, 0],
@@ -86,42 +68,36 @@ export default function Hero() {
           duration: 11,
           ease: "easeInOut"
         }}
-        className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-primary-midnight/5 rounded-full blur-[80px] pointer-events-none hidden md:block" 
+        className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-primary-midnight/5 rounded-full blur-[80px] pointer-events-none hidden md:block"
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Hero Content with Stagger Layout */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="show"
             className="lg:col-span-7 flex flex-col justify-center"
           >
             {/* Title / Main pitch */}
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary-midnight leading-[1.1] mb-6 font-sans text-left"
               id="hero-heading"
             >
-              {t('hero.title1')} <span className="text-ember relative inline-block">
-                {t('hero.automations')}
-                <motion.span 
+              {t('hero.pre')}{' '}
+              <span className="text-ember relative inline-block">
+                {t('hero.accent')}
+                <motion.span
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
-                  transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+                  transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
                   className="absolute bottom-1 left-0 h-[3px] bg-ember/30 rounded"
                 />
-              </span> {t('hero.and')} <span className="relative inline-block">
-                {t('hero.websites')}
-                <motion.span 
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ delay: 1.1, duration: 0.8, ease: "easeOut" }}
-                  className="absolute bottom-1 left-0 h-[3px] bg-primary-midnight/20 rounded"
-                />
-              </span> {t('hero.title2')}
+              </span>{' '}
+              {t('hero.post')}
             </motion.h1>
 
             {/* Subtext */}
@@ -139,14 +115,14 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-4 mb-10"
             >
               <button
-                onClick={() => handleScrollTo('#automations')}
+                onClick={() => handleScrollTo('#work')}
                 className="group flex items-center gap-2 rounded-md bg-primary-midnight hover:bg-slate-900 text-white px-6 py-3.5 text-base font-semibold transition-all duration-200 shadow-sm cursor-pointer"
                 id="hero-see-work"
               >
                 {t('hero.seeMyWork')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
-              
+
               <button
                 onClick={() => handleScrollTo('#contact')}
                 className="rounded-md border border-primary-midnight/20 hover:border-primary-midnight/40 text-primary-midnight px-6 py-3.5 text-base font-semibold transition-all duration-200 cursor-pointer"
@@ -176,152 +152,63 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Interactive Code / Workflow Terminal */}
+          {/* Right — Three-pillar service card */}
           <div className="lg:col-span-5 w-full flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.93, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 80, damping: 15, delay: 0.4 }}
               className="w-full max-w-md bg-[#0a0c16] rounded-xl overflow-hidden shadow-2xl border border-white/5 relative"
-              id="hero-terminal"
+              id="hero-services"
             >
               {/* Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#020409]/60 border-b border-white/5">
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                  <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                  <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-ember/60" />
                 </div>
-                <div className="flex items-center gap-1 text-[11px] font-mono text-white/40 tracking-wider">
-                  <Terminal className="h-3 w-3" />
-                  <span>workflow.json</span>
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-white/40 tracking-wider">
+                  <span>akhrorov.studio</span>
                 </div>
-                <div className="w-12" /> {/* spacing spacer */}
+                <div className="w-10" />
               </div>
 
-              {/* Code Panel / Animation Stage */}
-              <div className="p-5 font-mono text-[12px] text-white/80 overflow-y-auto leading-relaxed relative min-h-[360px] flex flex-col justify-between">
-                
-                {/* Simulated Flow Node Animation Overlay */}
-                <div className="space-y-4 mb-4">
-                  <div className="flex items-center justify-between text-[11px] text-white/40 border-b border-white/5 pb-2">
-                    <span>{t('hero.liveSim')}</span>
-                    <button 
-                      onClick={triggerWorkflow}
-                      className={`flex items-center gap-1.5 px-2 py-1 rounded bg-ember/15 text-ember hover:bg-ember/25 transition-all text-[11px] font-bold tracking-wider ${isRunning ? 'animate-pulse' : ''}`}
-                    >
-                      <Play className="h-3 w-3 fill-current" />
-                      {isRunning ? t('hero.running') : t('hero.run')}
-                    </button>
-                  </div>
+              {/* Body */}
+              <div className="p-5 md:p-6">
+                <p className="text-[11px] font-mono tracking-widest text-ember font-bold mb-4">
+                  {t('hero.pillarsTitle')}
+                </p>
 
-                  {/* Flow Graphic Node Visuals */}
-                  <div className="grid grid-cols-1 gap-3 py-2">
-                    
-                    {/* Node 1 */}
-                    <div className={`flex items-center justify-between p-3 rounded-lg border bg-[#0d1127] transition-all duration-300 ${
-                      runStep >= 1 ? 'border-ember text-white shadow-[0_0_15px_rgba(223,101,19,0.15)]' : 'border-white/5 text-white/60'
-                    }`}>
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${runStep >= 1 ? 'bg-ember animate-ping' : 'bg-white/20'}`} />
-                        <div>
-                          <p className="font-semibold text-xs">{t('hero.node1')}</p>
-                          <p className="text-[10px] text-white/40">endpoint: /lead-capture</p>
-                        </div>
-                      </div>
-                      {runStep >= 1 && <span className="text-[10px] font-bold text-ember">{t('hero.active')}</span>}
-                    </div>
-
-                    {/* Connecting Arrow */}
-                    <div className="flex justify-center -my-1 h-3 relative">
-                      <div className="w-[1.5px] h-full bg-white/10" />
-                      {isRunning && (
-                        <motion.div 
-                          className="absolute w-1.5 h-1.5 rounded-full bg-ember"
-                          initial={{ y: -6 }}
-                          animate={{ y: 6 }}
-                          transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-                        />
-                      )}
-                    </div>
-
-                    {/* Node 2 */}
-                    <div className={`flex items-center justify-between p-3 rounded-lg border bg-[#0d1127] transition-all duration-300 ${
-                      runStep >= 2 ? 'border-ember text-white shadow-[0_0_15px_rgba(223,101,19,0.15)]' : 'border-white/5 text-white/60'
-                    }`}>
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${runStep >= 2 ? 'bg-ember animate-ping' : 'bg-white/20'}`} />
-                        <div>
-                          <p className="font-semibold text-xs">{t('hero.node2')}</p>
-                          <p className="text-[10px] text-white/40">system: analyze_lead_intent</p>
-                        </div>
-                      </div>
-                      {runStep === 2 && <span className="text-[10px] font-bold text-ember">{t('hero.aiThinking')}</span>}
-                      {runStep > 2 && <span className="text-[10px] font-bold text-[#10b981]">{t('hero.qualified')}</span>}
-                    </div>
-
-                    {/* Connecting Arrow */}
-                    <div className="flex justify-center -my-1 h-3 relative">
-                      <div className="w-[1.5px] h-full bg-white/10" />
-                      {isRunning && runStep >= 2 && (
-                        <motion.div 
-                          className="absolute w-1.5 h-1.5 rounded-full bg-ember"
-                          initial={{ y: -6 }}
-                          animate={{ y: 6 }}
-                          transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-                        />
-                      )}
-                    </div>
-
-                    {/* Node 3 */}
-                    <div className={`flex items-center justify-between p-3 rounded-lg border bg-[#0d1127] transition-all duration-300 ${
-                      runStep >= 3 ? 'border-[#10b981] text-white shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'border-white/5 text-white/60'
-                    }`}>
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${runStep >= 3 ? 'bg-[#10b981]' : 'bg-white/20'}`} />
-                        <div>
-                          <p className="font-semibold text-xs">{t('hero.node3')}</p>
-                          <p className="text-[10px] text-white/40">action: push_and_notify_client</p>
-                        </div>
-                      </div>
-                      {runStep >= 3 ? (
-                        <div className="flex items-center gap-1 text-[10px] text-[#10b981] font-bold">
-                          <CheckCircle2 className="h-3.5 w-3.5" />
-                          <span>{t('hero.sent')}</span>
-                        </div>
-                      ) : null}
-                    </div>
-
-                  </div>
+                <div className="space-y-2.5">
+                  {pillars.map((pillar) => {
+                    const Icon = pillar.icon;
+                    return (
+                      <button
+                        key={pillar.title}
+                        onClick={() => handleScrollTo(pillar.target)}
+                        className="group w-full flex items-start gap-3.5 text-left p-3.5 rounded-lg bg-white/[0.03] border border-white/5 hover:border-ember/40 hover:bg-white/[0.05] transition-all duration-200 cursor-pointer"
+                      >
+                        <span className="flex items-center justify-center w-9 h-9 shrink-0 rounded-lg bg-ember/15 text-ember group-hover:bg-ember group-hover:text-white transition-colors duration-200">
+                          <Icon className="h-4.5 w-4.5" />
+                        </span>
+                        <span className="flex-1 min-w-0">
+                          <span className="block text-sm font-semibold text-white font-sans">{pillar.title}</span>
+                          <span className="block text-xs text-white/45 font-sans leading-relaxed mt-0.5">{pillar.desc}</span>
+                        </span>
+                        <ChevronRight className="h-4 w-4 text-white/25 group-hover:text-ember group-hover:translate-x-0.5 transition-all duration-200 mt-1 shrink-0" />
+                      </button>
+                    );
+                  })}
                 </div>
 
-                {/* Simulated JSON file display at the bottom */}
-                <pre className="text-[11px] text-white/40 leading-[1.3] pt-2 border-t border-white/5">
-                  <code>
-                    {`{
-  "webhook": { "status": "listening", "path": "lead-capture" },
-  "ai_agent": { "model": "gemini-2.5-pro", "intent": "book" },
-  "output": [ "hubspot_crm", "whatsapp_api_notify" ],
-  "execution_time_ms": ${runStep === 3 ? '420' : 'null'}
-}`}
-                  </code>
-                </pre>
+                <p className="mt-5 pt-4 border-t border-white/5 text-[11px] md:text-xs text-white/40 font-sans leading-relaxed">
+                  {t('hero.founderNote')}
+                </p>
               </div>
             </motion.div>
           </div>
 
-        </div>
-
-        {/* Scroll down indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 opacity-60">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-primary-midnight">{t('hero.scroll')}</span>
-          <motion.div 
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-6 rounded-full bg-primary-midnight/30 flex justify-center pt-1"
-          >
-            <div className="w-1 h-1.5 rounded-full bg-primary-midnight" />
-          </motion.div>
         </div>
       </div>
     </section>
