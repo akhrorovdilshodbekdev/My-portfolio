@@ -2,6 +2,7 @@ import { MessageSquare, Layers, TrendingUp } from 'lucide-react';
 import { motion } from 'motion/react';
 import { WORK_STEPS, WORK_STEPS_UZ } from '../data';
 import { useLanguage } from '../i18n/LanguageProvider';
+import { ssrInitial } from '../lib/prerender';
 
 export default function HowIWork() {
   const { t, lang } = useLanguage();
@@ -42,11 +43,12 @@ export default function HowIWork() {
           {workSteps.map((step, idx) => (
             <motion.div
               key={step.number}
-              initial={{ opacity: 0, y: 20 }}
+              initial={ssrInitial({ opacity: 0, y: 20 })}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
               whileHover={{ y: -4, boxShadow: '0 15px 30px rgba(2, 4, 18, 0.05)' }}
+              data-reveal
               className="relative overflow-hidden rounded-xl bg-white border border-card-border p-8 lg:p-10 flex flex-col justify-between group min-h-[300px]"
               id={`process-card-${step.number}`}
             >

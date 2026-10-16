@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Zap, Award, Globe, Smartphone, Bot, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
+import { ssrInitial } from '../lib/prerender';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -77,13 +78,14 @@ export default function Hero() {
           {/* Left Hero Content with Stagger Layout */}
           <motion.div
             variants={containerVariants}
-            initial="hidden"
+            initial={ssrInitial('hidden')}
             animate="show"
             className="lg:col-span-7 flex flex-col justify-center"
           >
             {/* Title / Main pitch */}
             <motion.h1
               variants={itemVariants}
+              data-reveal
               className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary-midnight leading-[1.1] mb-6 font-sans text-left"
               id="hero-heading"
             >
@@ -91,7 +93,7 @@ export default function Hero() {
               <span className="text-ember relative inline-block">
                 {t('hero.accent')}
                 <motion.span
-                  initial={{ width: 0 }}
+                  initial={ssrInitial({ width: 0 })}
                   animate={{ width: "100%" }}
                   transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
                   className="absolute bottom-1 left-0 h-[3px] bg-ember/30 rounded"
@@ -103,6 +105,7 @@ export default function Hero() {
             {/* Subtext */}
             <motion.p
               variants={itemVariants}
+              data-reveal
               className="text-lg md:text-xl text-primary-midnight/70 font-sans leading-relaxed mb-8 max-w-xl text-left"
               id="hero-subheading"
             >
@@ -112,6 +115,7 @@ export default function Hero() {
             {/* Buttons */}
             <motion.div
               variants={itemVariants}
+              data-reveal
               className="flex flex-wrap items-center gap-4 mb-10"
             >
               <button
@@ -135,6 +139,7 @@ export default function Hero() {
             {/* Key stats labels */}
             <motion.div
               variants={itemVariants}
+              data-reveal
               className="flex flex-wrap items-center gap-6 md:gap-8 border-t border-card-border/40 pt-8"
             >
               <div className="flex items-center gap-2.5 text-sm font-medium text-primary-midnight/80">
@@ -155,9 +160,10 @@ export default function Hero() {
           {/* Right — Three-pillar service card */}
           <div className="lg:col-span-5 w-full flex justify-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.93, y: 30 }}
+              initial={ssrInitial({ opacity: 0, scale: 0.93, y: 30 })}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 80, damping: 15, delay: 0.4 }}
+              data-reveal
               className="w-full max-w-md bg-[#0a0c16] rounded-xl overflow-hidden shadow-2xl border border-white/5 relative"
               id="hero-services"
             >

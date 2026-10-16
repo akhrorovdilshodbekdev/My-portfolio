@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../i18n/LanguageProvider';
+import { ssrInitial } from '../lib/prerender';
 
 const HEROES = [
   { src: '/images/opt-restaurant1.jpg', label: 'Restaurant', project: 'Restaurant' },
@@ -61,7 +62,7 @@ export default function LandingPages() {
                 src={hero.src}
                 alt={hero.label}
                 loading="lazy"
-                initial={{ opacity: 0 }}
+                initial={ssrInitial({ opacity: 0 })}
                 animate={{ opacity: idx === currentIndex ? 1 : 0 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
                 className="absolute inset-0 w-full h-full object-cover object-top"

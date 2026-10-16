@@ -2,17 +2,28 @@ import React from 'react';
 import { Mail, Linkedin } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
 import { CONTACT_EMAIL, CONTACT_LINKEDIN } from '../constants';
+import { ROUTES, type RouteKey } from '../routes';
+
+/** Reuses the header's existing labels rather than adding a parallel set. */
+const PAGE_LABEL: Record<RouteKey, string> = {
+  home: 'header.work',
+  automations: 'header.automations',
+  websites: 'header.websites',
+  work: 'header.work',
+  roi: 'header.roiCalculator',
+  contact: 'header.contact',
+};
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
 
   const handleScrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+    // From a sub-page there is no #home to scroll to — let the link navigate.
     const target = document.querySelector('#home');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -22,7 +33,7 @@ export default function Footer() {
           {/* Logo & Subtitle */}
           <div className="text-center md:text-left">
             <a 
-              href="#home" 
+              href="/#home" 
               onClick={handleScrollToTop}
               className="text-2xl font-bold tracking-tight text-white block mb-1"
               id="footer-logo"
@@ -33,6 +44,24 @@ export default function Footer() {
               {t('footer.tagline')}
             </p>
           </div>
+
+          {/* Site links. This is the one set of real, static internal links that
+              appears on every page, so it is what lets a crawler discover the
+              sub-pages and relate them to each other. */}
+          <nav aria-label="Site pages">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              {ROUTES.filter((r) => r.key !== 'home').map((r) => (
+                <li key={r.path}>
+                  <a
+                    href={r.path}
+                    className="text-xs font-mono font-medium text-white/55 hover:text-ember transition-colors"
+                  >
+                    {t(PAGE_LABEL[r.key])}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           {/* Contact Links */}
           <div className="flex flex-wrap items-center justify-center gap-6">
@@ -61,7 +90,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 text-xs text-white/40 font-mono">
           <p>© {currentYear} akhrorov.com {t('footer.copyright')}</p>
           <a 
-            href="#home" 
+            href="/#home" 
             onClick={handleScrollToTop}
             className="hover:text-white transition-colors"
           >

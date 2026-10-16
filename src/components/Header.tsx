@@ -7,22 +7,27 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
 
+  // Written as "/#section" rather than "#section" so the same link works from a
+  // sub-page: there it navigates home and the browser jumps to the anchor.
   const navItems = [
-    { label: t('header.work'), href: '#work' },
-    { label: t('header.automations'), href: '#automations' },
-    { label: t('header.websites'), href: '#websites' },
-    { label: t('header.roiCalculator'), href: '#roi' },
-    { label: t('header.faq'), href: '#faq' },
-    { label: t('header.contact'), href: '#contact' },
+    { label: t('header.work'), href: '/#work' },
+    { label: t('header.automations'), href: '/#automations' },
+    { label: t('header.websites'), href: '/#websites' },
+    { label: t('header.roiCalculator'), href: '/#roi' },
+    { label: t('header.faq'), href: '/#faq' },
+    { label: t('header.contact'), href: '/#contact' },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setIsOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Only take over when we are on the homepage and the section is really here.
+    // From a sub-page this falls through to a normal navigation.
+    const hash = href.startsWith('/#') ? href.slice(1) : href;
+    if (!hash.startsWith('#')) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const toggleLanguage = () => {
@@ -34,7 +39,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Logo */}
         <a 
-          href="#home" 
+          href="/#home" 
           onClick={(e) => handleScroll(e, '#home')} 
           className="text-xl font-bold tracking-tight text-primary-midnight"
           id="nav-logo"
@@ -70,7 +75,7 @@ export default function Header() {
           </button>
 
           <a
-            href="#contact"
+            href="/#contact"
             onClick={(e) => handleScroll(e, '#contact')}
             className="rounded-md bg-ember hover:bg-ember-hover text-white px-5 py-2 text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow"
             id="nav-hire-me"
@@ -135,7 +140,7 @@ export default function Header() {
               </button>
 
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={(e) => handleScroll(e, '#contact')}
                 className="mt-2 block w-full text-center rounded-lg bg-ember hover:bg-ember-hover text-white px-5 py-3 text-sm font-semibold transition-all duration-200 shadow-sm"
                 id="mobile-nav-hire-me"

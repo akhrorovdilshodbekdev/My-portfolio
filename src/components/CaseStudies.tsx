@@ -5,6 +5,7 @@ import { REAL_PROJECTS, REAL_PROJECTS_UZ } from '../data';
 import { useLanguage } from '../i18n/LanguageProvider';
 import type { MouseEvent } from 'react';
 import type { RealProject } from '../types';
+import { ssrInitial } from '../lib/prerender';
 
 export default function CaseStudies() {
   const { t, lang } = useLanguage();
@@ -40,10 +41,11 @@ export default function CaseStudies() {
             return (
               <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={ssrInitial({ opacity: 0, y: 24 })}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5 }}
+                data-reveal
                 className="rounded-2xl border border-card-border bg-white shadow-sm overflow-hidden"
               >
                 <div className="grid md:grid-cols-2 gap-0">

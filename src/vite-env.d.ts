@@ -9,3 +9,9 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/** Set by src/main.tsx once the bundle has mounted; read by the inline script
+ *  in index.html to decide whether its un-hide failsafe should fire. */
+interface Window {
+  __appMounted?: boolean;
+}

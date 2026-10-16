@@ -4,6 +4,7 @@ import { Send, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useLanguage } from '../i18n/LanguageProvider';
 import { CONTACT_WHATSAPP, CONTACT_TELEGRAM } from '../constants';
+import { ssrInitial } from '../lib/prerender';
 
 interface ContactFormProps {
   prefill?: {
@@ -119,9 +120,10 @@ export default function ContactForm({ prefill }: ContactFormProps) {
             {!isSubmitted ? (
               <motion.form
                 key="contact-form"
-                initial={{ opacity: 0 }}
+                initial={ssrInitial({ opacity: 0 })}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                data-reveal
                 onSubmit={handleSubmit}
                 className="space-y-6"
                 id="form-ready-to-automate"
@@ -245,7 +247,7 @@ export default function ContactForm({ prefill }: ContactFormProps) {
                     {t('contact.submitAnother')}
                   </button>
                   <a
-                    href="#home"
+                    href="/#home"
                     className="flex items-center justify-center gap-1.5 rounded-md bg-ember hover:bg-amber-600 px-5 py-2.5 text-xs font-bold text-white transition-all shadow-md cursor-pointer"
                   >
                     <span>{t('contact.backToTop')}</span>

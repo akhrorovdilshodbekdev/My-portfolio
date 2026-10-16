@@ -3,11 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { useState } from 'react';
 import LanguageProvider from './i18n/LanguageProvider';
 import Header from './components/Header';
@@ -21,9 +16,77 @@ import HowItWorks from './components/HowItWorks';
 import ROICalculator from './components/ROICalculator';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import PageHero from './components/PageHero';
+import type { RouteMeta } from './routes';
 
-export default function App() {
-  const [prefill, setPrefill] = useState<{ service: string; details: string } | undefined>(undefined);
+type Prefill = { service: string; details: string } | undefined;
+
+/** The homepage: the full single-page scroll, unchanged. */
+function HomeSections({ onPrefill, prefill }: { onPrefill: (s: string, d: string) => void; prefill: Prefill }) {
+  return (
+    <>
+      <Hero />
+      <CaseStudies />
+      <HowIWork />
+      <SystemsBuilt />
+      <LandingPages />
+      <ToolsIUse />
+      <HowItWorks />
+      <ROICalculator onPrefill={onPrefill} />
+      <ContactForm prefill={prefill} />
+    </>
+  );
+}
+
+/**
+ * A focused sub-page: its own <h1> and intro, then the section it is about.
+ * Reusing the section components keeps one source of truth for the content;
+ * the distinct h1/title is what makes these separate pages to a search engine.
+ */
+function PageBody({ route, onPrefill, prefill }: { route: RouteMeta; onPrefill: (s: string, d: string) => void; prefill: Prefill }) {
+  switch (route.key) {
+    case 'automations':
+      return (
+        <>
+          <PageHero route={route} />
+          <SystemsBuilt />
+        </>
+      );
+    case 'websites':
+      return (
+        <>
+          <PageHero route={route} />
+          <LandingPages />
+        </>
+      );
+    case 'work':
+      return (
+        <>
+          <PageHero route={route} />
+          <CaseStudies />
+        </>
+      );
+    case 'roi':
+      return (
+        <>
+          <PageHero route={route} />
+          <ROICalculator onPrefill={onPrefill} />
+        </>
+      );
+    case 'contact':
+      return (
+        <>
+          <PageHero route={route} />
+          <ContactForm prefill={prefill} />
+        </>
+      );
+    default:
+      return null;
+  }
+}
+
+export default function App({ route }: { route: RouteMeta }) {
+  const [prefill, setPrefill] = useState<Prefill>(undefined);
 
   const handlePrefill = (service: string, details: string) => {
     setPrefill({ service, details });
@@ -35,24 +98,19 @@ export default function App() {
 
   return (
     <LanguageProvider>
-    <div className="min-h-screen bg-canvas-bg flex flex-col justify-between" id="app-wrapper">
-      <Header />
-      
-      <main className="flex-1">
-        <Hero />
-        <CaseStudies />
-        <HowIWork />
-        <SystemsBuilt />
-        <LandingPages />
-        <ToolsIUse />
-        <HowItWorks />
-        <ROICalculator onPrefill={handlePrefill} />
-        <ContactForm prefill={prefill} />
-      </main>
+      <div className="min-h-screen bg-canvas-bg flex flex-col justify-between" id="app-wrapper">
+        <Header />
 
-      <Footer />
-    </div>
+        <main className="flex-1">
+          {route.key === 'home' ? (
+            <HomeSections onPrefill={handlePrefill} prefill={prefill} />
+          ) : (
+            <PageBody route={route} onPrefill={handlePrefill} prefill={prefill} />
+          )}
+        </main>
+
+        <Footer />
+      </div>
     </LanguageProvider>
   );
 }
-

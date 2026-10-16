@@ -64,6 +64,24 @@ video, iframe, canvas {
   max-width: 100%;
 }
 
+/* ===== Entrance reveal =====
+   The prerendered HTML ships every section fully visible, so crawlers and
+   JS-off visitors get the real content. The inline script in index.html adds
+   `.js` before first paint, which hides these targets so motion can fade them
+   back in — that ordering is what avoids a visible -> hidden -> visible flash.
+   Only opacity is pre-hidden: motion owns the transform, and setting one here
+   risks the two fighting and leaving elements offset. */
+.js [data-reveal] {
+  opacity: 0;
+}
+
+/* Nothing should ever be hidden from someone who asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+  }
+}
+
 /* ===== Tools brand marquee ===== */
 .marquee-track {
   animation: marquee-scroll var(--marquee-duration, 46s) linear infinite;
