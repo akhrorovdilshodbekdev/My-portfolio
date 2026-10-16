@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import LanguageProvider from './i18n/LanguageProvider';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -39,50 +39,41 @@ function HomeSections({ onPrefill, prefill }: { onPrefill: (s: string, d: string
 }
 
 /**
- * A focused sub-page: its own <h1> and intro, then the section it is about.
- * Reusing the section components keeps one source of truth for the content;
- * the distinct h1/title is what makes these separate pages to a search engine.
+ * A focused sub-page: its own <h1> and intro, the section it is about, then the
+ * contact form. Every sub-page ends with the form on purpose — someone arriving
+ * from an outreach link has already decided they are interested, and the header
+ * CTA must not bounce them back to the homepage to find a way to reply.
  */
 function PageBody({ route, onPrefill, prefill }: { route: RouteMeta; onPrefill: (s: string, d: string) => void; prefill: Prefill }) {
+  let section: ReactNode = null;
+
   switch (route.key) {
     case 'automations':
-      return (
-        <>
-          <PageHero route={route} />
-          <SystemsBuilt />
-        </>
-      );
+      section = <SystemsBuilt />;
+      break;
     case 'websites':
-      return (
-        <>
-          <PageHero route={route} />
-          <LandingPages />
-        </>
-      );
+      section = <LandingPages />;
+      break;
     case 'work':
-      return (
-        <>
-          <PageHero route={route} />
-          <CaseStudies />
-        </>
-      );
+      section = <CaseStudies />;
+      break;
     case 'roi':
-      return (
-        <>
-          <PageHero route={route} />
-          <ROICalculator onPrefill={onPrefill} />
-        </>
-      );
+      section = <ROICalculator onPrefill={onPrefill} />;
+      break;
     case 'contact':
-      return (
-        <>
-          <PageHero route={route} />
-          <ContactForm prefill={prefill} />
-        </>
-      );
+      // The form below is the whole page.
+      break;
     default:
       return null;
   }
+
+  return (
+    <>
+      <PageHero route={route} />
+      {section}
+      <ContactForm prefill={prefill} />
+    </>
+  );
 }
 
 export default function App({ route }: { route: RouteMeta }) {
