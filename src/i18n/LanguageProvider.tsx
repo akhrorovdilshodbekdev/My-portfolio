@@ -87,9 +87,14 @@ const enTranslations: Record<string, any> = {
     keyCapabilities: 'Key Capabilities & Integrations',
     businessImpact: 'How it helps your business',
     stack: 'Stack:',
-    interactivePipeline: 'Interactive Pipeline Playground',
     omnichannelPlayground: 'Interactive Omnichannel Playground',
     conversationalPlayground: 'Interactive Conversational Playground',
+    demoBadge: 'LIVE DEMO',
+    demoTitle: 'Automated Lead Response System',
+    demoLead: 'Watch a real lead go from a form submission to an approved reply — the entire system running end to end.',
+    demoCta: 'Watch the 90-second demo',
+    demoNote: 'Self-hosted on a private server — your data, your rules, no per-lead fees.',
+    demoDuration: '1:39',
   },
   work: {
     badge: 'REAL WORK',
@@ -168,6 +173,36 @@ const enTranslations: Record<string, any> = {
     error: 'Something went wrong. Please try again or reach me directly on Telegram.',
     direct: 'Prefer to talk directly?',
   },
+  // Headline + intro for each standalone page (see src/routes.ts). Deliberately
+  // different from the homepage sections' headings — distinct <h1>s per URL are
+  // what stop these reading as duplicates of the homepage.
+  pages: {
+    automations: {
+      title: 'AI automation that answers, books and qualifies for you',
+      intro:
+        'I build n8n workflows and AI assistants that capture every lead, reply in seconds and book appointments while you sleep — running on your own server, with no per-lead fees.',
+    },
+    websites: {
+      title: 'Websites that turn visitors into customers',
+      intro:
+        'A fast, modern site delivered as one done-for-you package: I register the domain, set up hosting, write the copy and handle the SEO, so you go live in 5–7 days without configuring anything.',
+    },
+    work: {
+      title: 'Built and running',
+      intro:
+        'Not mockups. These are real products in use today — a public website and a private management app an education centre runs on every day, plus a self-hosted 56-node AI assistant.',
+    },
+    roi: {
+      title: 'What could automation save you?',
+      intro:
+        'Pick the problem that costs you most — manual work, lost leads, no-shows or repeated support questions — and see the hours and money you would get back.',
+    },
+    contact: {
+      title: "Let's build your project",
+      intro:
+        'Tell me what you need and I will come back within 24 hours with a plan and a fixed quote. No hourly surprises and no account managers — you work directly with me.',
+    },
+  },
   footer: {
     tagline: 'Automation & Web Development',
     email: 'Email',
@@ -221,9 +256,14 @@ const uzTranslations: Record<string, any> = {
     keyCapabilities: 'Asosiy imkoniyatlar va integratsiyalar',
     businessImpact: "Sizning biznesingizga qanday yordam beradi",
     stack: 'Texnologiyalar:',
-    interactivePipeline: 'Interaktiv quvur liniyasi',
     omnichannelPlayground: 'Interaktiv omnikanal maydonchasi',
     conversationalPlayground: "Interaktiv suhbat maydonchasi",
+    demoBadge: 'JONLI DEMO',
+    demoTitle: 'Avtomatik lead javob tizimi',
+    demoLead: "Haqiqiy leadning formani to'ldirishidan tasdiqlangan javobgacha bo'lgan yo'lini ko'ring — butun tizim boshidan oxirigacha ishlaydi.",
+    demoCta: "90 soniyalik demoni ko'rish",
+    demoNote: "Shaxsiy serverda joylashtirilgan — ma'lumotlaringiz o'zingizda qoladi, har bir lead uchun to'lov yo'q.",
+    demoDuration: '1:39',
   },
   work: {
     badge: 'HAQIQIY ISHLAR',
@@ -301,6 +341,33 @@ const uzTranslations: Record<string, any> = {
     fillFields: "Iltimos, barcha maydonlarni to'ldiring!",
     error: "Xatolik yuz berdi. Iltimos, qayta urinib ko'ring yoki Telegram orqali bog'laning.",
     direct: "To'g'ridan-to'g'ri yozishni xohlaysizmi?",
+  },
+  pages: {
+    automations: {
+      title: "Siz uchun javob beradigan, bron qiladigan va saralaydigan AI avtomatlashtirish",
+      intro:
+        "Men har bir leadni ushlab oladigan, soniyalar ichida javob beradigan va siz uxlayotganda uchrashuvlarni bron qiladigan n8n ish jarayonlari va AI yordamchilarni quraman — o'z serveringizda ishlaydi, har bir lead uchun to'lov yo'q.",
+    },
+    websites: {
+      title: 'Tashrif buyuruvchilarni mijozga aylantiradigan veb-saytlar',
+      intro:
+        "Bitta tayyor paket sifatida tezkor va zamonaviy sayt: domenni ro'yxatdan o'tkazaman, xostingni sozlayman, matnlarni yozaman va SEOni o'zim bajaraman — siz 5-7 kun ichida hech narsa sozlamasdan ishga tushasiz.",
+    },
+    work: {
+      title: 'Qurilgan va ishlamoqda',
+      intro:
+        "Maket emas. Bular bugun amalda ishlatilayotgan haqiqiy mahsulotlar — ta'lim markazi har kuni ishlatadigan ochiq veb-sayt va maxfiy boshqaruv ilovasi hamda o'z serverida joylashgan 56 tugunli AI yordamchi.",
+    },
+    roi: {
+      title: 'Avtomatlashtirish sizga qancha tejaydi?',
+      intro:
+        "Sizga eng qimmatga tushadigan muammoni tanlang — qo'l mehnati, yo'qotilgan leadlar, kelmasliklar yoki takroriy savollar — va qancha vaqt va pul qaytishingizni ko'ring.",
+    },
+    contact: {
+      title: 'Loyihangizni quraylik',
+      intro:
+        "Menga nima kerakligini ayting — 24 soat ichida reja va aniq narx bilan javob beraman. Kutilmagan soatlik to'lovlar va akkaunt menejerlari yo'q — bevosita men bilan ishlaysiz.",
+    },
   },
   footer: {
     tagline: 'Avtomatlashtirish va Veb-ishlanma',

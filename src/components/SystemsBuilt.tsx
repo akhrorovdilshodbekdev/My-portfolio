@@ -2,10 +2,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { AUTOMATION_PROJECTS, AUTOMATION_PROJECTS_UZ } from '../data';
 import { ChevronDown, CheckCircle2, Zap, Calendar, Workflow, Layers, Settings, Server } from 'lucide-react';
 import { useState } from 'react';
-import LeadCaptureSandbox from './portfolio/LeadCaptureSandbox';
+import LeadSystemVideo from './portfolio/LeadSystemVideo';
 import ClinicSchedulerSandbox from './portfolio/ClinicSchedulerSandbox';
 import RestaurantBookingSandbox from './portfolio/RestaurantBookingSandbox';
 import { useLanguage } from '../i18n/LanguageProvider';
+import { ssrInitial } from '../lib/prerender';
 
 export default function SystemsBuilt() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -64,6 +65,12 @@ export default function SystemsBuilt() {
           </div>
         </div>
 
+        {/* Flagship walkthrough — the strongest proof, so it is shown before
+            the three collapsible cards rather than hidden inside one. */}
+        <div className="max-w-5xl mb-12">
+          <LeadSystemVideo />
+        </div>
+
         {/* Project Cards Stack / Grid */}
         <div className="space-y-6 max-w-5xl">
           {projects.map((project, idx) => {
@@ -71,10 +78,11 @@ export default function SystemsBuilt() {
             return (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 25 }}
+                initial={ssrInitial({ opacity: 0, y: 25 })}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
+                data-reveal
                 onClick={() => toggleExpand(project.id)}
                 className={`group cursor-pointer rounded-xl bg-white border transition-all duration-300 overflow-hidden ${
                   isExpanded 
@@ -191,15 +199,6 @@ export default function SystemsBuilt() {
                         )}
 
                         {/* Interactive Sandbox Demos & Visual Proofs */}
-                        {project.id === 'auto-1' && (
-                          <div className="pt-2">
-                            <h5 className="text-xs font-bold font-mono uppercase tracking-wider text-primary-midnight/50 mb-3">
-                              {t('automations.interactivePipeline')}
-                            </h5>
-                            <LeadCaptureSandbox />
-                          </div>
-                        )}
-
                         {project.id === 'auto-3' && (
                           <div className="pt-2">
                             <h5 className="text-xs font-bold font-mono uppercase tracking-wider text-primary-midnight/50 mb-3">

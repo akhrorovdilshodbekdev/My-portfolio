@@ -45,21 +45,6 @@ export const WORK_STEPS_UZ: WorkStep[] = [
 
 export const AUTOMATION_PROJECTS: Project[] = [
   {
-    id: 'auto-1',
-    title: 'Real Estate Lead Capture System',
-    description: 'n8n workflow for lead capture/qualification.',
-    tags: ['n8n', 'OpenAI', 'Telegram API', 'Google Sheets'],
-    mockType: 'workflow',
-    extendedDescription: 'A complete custom webhook-triggered n8n workflow designed for real estate agencies. Built to run either in the cloud or self-hosted on your own secure private VPS to eliminate monthly subscription limits and ensure 100% data privacy. When a new inquiry hits the website, our workflow runs it through OpenAI for intent analysis, extracts crucial details like budget and property type, saves them directly into Google Sheets, and alerts the agents via Telegram in real-time.',
-    features: [
-      'Webhook listener for fast, low-latency integration with contact forms.',
-      'AI intent analysis & qualification utilizing OpenAI / Gemini model APIs.',
-      'Instant notifications dispatched directly to agent groups in Telegram.',
-      'Deployable on secure private VPS to eliminate n8n subscription costs.'
-    ],
-    impact: 'In real estate, the first agent to respond usually wins the deal. This workflow catches every website inquiry the moment it lands — AI instantly qualifies the buyer, logs them to your CRM or sheet, and alerts your agents on Telegram in seconds. Run the live demo above and watch it happen.'
-  },
-  {
     id: 'auto-3',
     title: 'Multi-Channel Booking for Restaurant',
     description: 'Omnichannel booking widget & Telegram bot with knowledge base answers.',
@@ -92,21 +77,6 @@ export const AUTOMATION_PROJECTS: Project[] = [
 
 // Uzbek translations for automation projects
 export const AUTOMATION_PROJECTS_UZ: Project[] = [
-  {
-    id: 'auto-1',
-    title: "Ko'chmas mulk lead yig'ish tizimi",
-    description: 'n8n ish jarayoni lead yig\'ish/saralash uchun.',
-    tags: ['n8n', 'OpenAI', 'Telegram API', 'Google Sheets'],
-    mockType: 'workflow',
-    extendedDescription: "Ko'chmas mulk agentliklari uchun maxsus webhook orqali ishga tushiriladigan n8n ish jarayoni. Bulutda yoki o'zingizning shaxsiy VPSingizda ishlashga mo'ljallangan bo'lib, oylik obuna cheklovlarini yo'q qiladi va 100% ma'lumot maxfiyligini ta'minlaydi. Yangi so'rov veb-saytga kelganda, ish jarayoni uni OpenAI orqali tahlil qiladi, muhim ma'lumotlarni (byudjet, mulk turi) ajratib oladi, Google Sheets ga saqlaydi va agentlarni Telegram orqali real vaqtda xabardor qiladi.",
-    features: [
-      "Kontakt formalar bilan tezkor integratsiya uchun Webhook tinglovchisi.",
-      'OpenAI / Gemini modellari yordamida AI niyat tahlili va saralash.',
-      "Telegram guruhlariga to'g'ridan-to'g'ri jo'natiladigan tezkor bildirishnomalar.",
-      "n8n obuna xarajatlarini yo'q qilish uchun xavfsiz shaxsiy VPS ga joylashtirish."
-    ],
-    impact: "Ko'chmas mulkda birinchi bo'lib javob bergan agent odatda mijozni qo'lga kiritadi. Bu ish jarayoni veb-saytdagi har bir so'rovni paydo bo'lishi bilan qabul qiladi — AI uni darhol saralaydi, CRM yoki jadvalingizga yozadi va agentlarni soniyalar ichida Telegram orqali ogohlantiradi. Yuqoridagi jonli demoda sinab ko'ring."
-  },
   {
     id: 'auto-3',
     title: 'Restoran uchun ko\'p kanalli bron qilish',
@@ -256,6 +226,29 @@ export const REAL_PROJECTS_UZ: RealProject[] = [
   },
 ];
 
+// ============================================================
+// FLAGSHIP VIDEO DEMO — the Automated Lead Response System.
+// A 98-second screen recording of the workflow actually executing; the
+// n8n execution-history panel is visible in it. Nothing here claims more
+// than the recording shows.
+// ============================================================
+export const LEAD_DEMO_VIDEO = '/video/lead-response-system.mp4';
+export const LEAD_DEMO_POSTER = '/video/lead-response-system-poster.jpg';
+
+export const LEAD_DEMO_POINTS: string[] = [
+  'A lead submits the form — the n8n workflow fires automatically',
+  'AI qualifies it and logs it straight to your CRM',
+  'A personalised reply is drafted in seconds, while interest is still hot',
+  'It reaches your Telegram first — one tap to send it, or handle it yourself',
+];
+
+export const LEAD_DEMO_POINTS_UZ: string[] = [
+  "Lead formani to'ldiradi — n8n ish jarayoni avtomatik ishga tushadi",
+  'AI uni saralaydi va bevosita CRMingizga yozadi',
+  "Shaxsiylashtirilgan javob bir necha soniyada, qiziqish hali issiqligida tayyorlanadi",
+  "Avval Telegramingizga keladi — bir bosishda yuboring yoki o'zingiz hal qiling",
+];
+
 export const TOOLS: Tool[] = [
   { name: 'n8n', category: 'Automation', brand: 'n8n' },
   { name: 'Claude API', category: 'Development', brand: 'claude' },
@@ -308,7 +301,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   },
   {
     question: 'Can you build for my specific industry?',
-    answer: 'Yes. The live demos on this page cover real estate, clinics, and restaurants, and an education centre is a current client — I built its website and its internal management app. If your business repeats a daily digital task or needs more customers online, the same approach applies. Not sure where you fit? Tell me what you do and I\'ll point you to the right starting point.'
+    answer: 'Yes. The live demos on this page cover clinics and restaurants, there is a full walkthrough of a lead response system, and an education centre is a current client — I built its website and its internal management app. If your business repeats a daily digital task or needs more customers online, the same approach applies. Not sure where you fit? Tell me what you do and I\'ll point you to the right starting point.'
   }
 ];
 
@@ -352,6 +345,6 @@ export const FAQ_ITEMS_UZ: FAQItem[] = [
   },
   {
     question: "Mening soham uchun qura olasizmi?",
-    answer: "Ha. Bu sahifadagi jonli demolar ko'chmas mulk, klinika va restoranni qamrab oladi, ta'lim markazi esa hozirgi mijozim — uning veb-saytini va ichki boshqaruv ilovasini qurdim. Agar biznesingiz har kuni raqamli vazifani takrorlasa yoki onlayn mijozlarga muhtoj bo'lsa, xuddi shu yondashuv ishlaydi. Qayerga mos kelishingizga ishonchingiz komil bo'lmasa, nima qilishingizni ayting — men to'g'ri boshlanish nuqtasini ko'rsataman."
+    answer: "Ha. Bu sahifadagi jonli demolar klinika va restoranni qamrab oladi, lead javob tizimining to'liq ko'rinishi ham bor, ta'lim markazi esa hozirgi mijozim — uning veb-saytini va ichki boshqaruv ilovasini qurdim. Agar biznesingiz har kuni raqamli vazifani takrorlasa yoki onlayn mijozlarga muhtoj bo'lsa, xuddi shu yondashuv ishlaydi. Qayerga mos kelishingizga ishonchingiz komil bo'lmasa, nima qilishingizni ayting — men to'g'ri boshlanish nuqtasini ko'rsataman."
   }
 ];
